@@ -47,21 +47,21 @@ const Home = () =>
               <div className="mt-[30px] lg:mt-[70px] flex flex-wrap justify-evenly items-center lg:flex-row sm:flex-row sm:items-center sm:justify-evenly lg:items-center gap-5 lg:gap-[30px]">
 
                 <div>
-                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] dark:text-teal-600 text-headingColor" >30+</h2>
+                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-teal-600" >30+</h2>
                   {/* <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-14px]"></span> */}
                   <p className="text_para  dark:text-white">
                     Years of Experience</p>
                 </div>
 
                 <div>
-                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] dark:text-teal-600 text-headingColor">15+</h2>
+                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-teal-600">15+</h2>
                   {/* <span className="w-[100px] h-2 bg-purpleColor rounded-full block mt-[-14px]"></span> */}
                   <p className="text_para  dark:text-white">
                     Clinic Locations</p>
                 </div>
 
                 <div>
-                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:leading-[54px] font-[700] dark:text-teal-600 text-headingColor" >100%</h2>
+                  <h2 className="text-[28px] leading-[36px] sm:text-[36px] sm:leading-[56px] lg:leading-[54px] font-[700] text-teal-600 " >100%</h2>
                   {/* <span className="w-[100px] h-2 bg-irisBlueColor rounded-full block mt-[-14px]"></span> */}
                   <p className="text_para dark:text-white">
                     Patients Satisfaction</p>
@@ -86,11 +86,11 @@ const Home = () =>
       </section>
       {/* ====== hero section end ======== */}
 
-      {/* ====== Services ========== */}
-      <section>
+      {/* ====== Qualities ========== */}
+      <section className="dark:border-b dark:border-b-[#061d39]">
         <div className="container">
-          <div className="lg:w-[470px] mx-auto">
-            <h2 className="heading text-center text-slate-900 dark:text-teal-600">
+          <div className="lg:w-[540px] lg:text-2xl mx-auto">
+            <h2 className="heading text-center text-slate-900  dark:text-teal-600">
               Providing the best medical services
             </h2>
             <p className="text_para text-center dark:text-white">
@@ -167,7 +167,7 @@ const Home = () =>
           </div>
         </div>
       </section>
-      {/* ====== Services end ========== */}
+      {/* ====== Qualities end ========== */}
 
       {/* ========= */}
       <About />

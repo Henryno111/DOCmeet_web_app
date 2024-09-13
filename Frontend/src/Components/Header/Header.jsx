@@ -76,10 +76,10 @@ const Header = () =>
 
           {/* ======= menu ========= */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-            <ul className="menu dark:bg-slate-950 flex items-center gap-[2.7rem]">
+            <ul className="menu dark:bg-background flex items-center gap-[2.7rem]">
               {
                 navLinks.map((link, index) => (<li key={index}>
-                  <NavLink to={link.path} className={navClass => navClass.isActive ? "text-primaryColor  dark:text-teal-600 text-[16px] leading-7 font-[600]" : "text-textColor dark:text-[#fee0e0] text-[16px] leading-7 font-[500] dark:hover:text-teal-600 hover:text-primaryColor"}
+                  <NavLink to={link.path} className={navClass => navClass.isActive ? "text-teal-600 text-[16px] leading-7 font-[600]" : "text-textColor dark:text-[#fee0e0] text-[16px] leading-7 font-[500] hover:text-teal-600 "}
                   >
                     {link.display}
                   </NavLink>
