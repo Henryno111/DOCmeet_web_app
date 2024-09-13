@@ -90,7 +90,7 @@ const Home = () =>
       <section className="dark:border-b dark:border-b-[#061d39]">
         <div className="container">
           <div className="lg:w-[540px] lg:text-2xl mx-auto">
-            <h2 className="heading text-center text-slate-900  dark:text-teal-600">
+            <h2 className="heading text-center text-slate-900  dark:text-primaryColor">
               Providing the best medical services
             </h2>
             <p className="text_para text-center dark:text-white">
@@ -173,7 +173,7 @@ const Home = () =>
       <About />
 
       {/* ===== services section ====== */}
-      <section>
+      <section className="dark:border-b dark:border-b-[#061d39]">
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center dark:text-primaryColor">Our medical services</h2>
@@ -189,22 +189,22 @@ const Home = () =>
       {/* ====== services section end ========= */}
 
       {/* =========== feature section ==========*/}
-      <section>
+      <section className="py-20 dark:border-b dark:border-b-[#061d39] px-4">
         <div className="container">
-          <div className="flex item justify-between flex-col lg:flex-row">
+          <div className="flex item justify-between gap-8 flex-col lg:flex-row">
             {/* ====== feature content ======= */}
             <div className="xl:w-[670px]">
-              <h2 className="heading">
+              <h2 className="heading dark:text-primaryColor">
                 Get virtual treatment <br /> anytime.
               </h2>
-              <ul className="pl-4">
-                <li className="text_para">
+              <ul className="">
+                <li className="text_para dark:text-[#fde3e3]">
                   1. Schedule for your appointment directly.
                 </li>
-                <li className="text_para">
+                <li className="text_para dark:text-[#fde3e3]">
                   2. Search for your physician here, and contact their office.
                 </li>
-                <li className="text_para">
+                <li className="text_para dark:text-[#fde3e3]">
                   3. View our physicians who are accepting new patients, use the online scheduling tool to select and appointment time.
                 </li>
               </ul>
@@ -214,7 +214,7 @@ const Home = () =>
             </div>
 
             {/* ========= feature img ======== */}
-            <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
+            <div className="relative z-10 xl:w-[800px] flex justify-end mt-[50px] lg:mt-0">
               <img src={featureImg} className="w-3/4" alt="" />
 
               <div className="w-[150px]  lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
@@ -233,7 +233,7 @@ const Home = () =>
                   </span>
                 </div>
 
-                <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6px] lg:px-[10px] text-[8px] leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
+                <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] dark:bg-teal-500 dark:text-white py-1 px-2 lg:py-[6px] lg:px-[10px] text-[8px] leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
                   Consultation
                 </div>
 
@@ -250,11 +250,11 @@ const Home = () =>
       </section>
       {/* ========= feature section end ========== */}
       {/* ======== our great doctors =========== */}
-      <section>
+      <section className="px-4 py-20 dark:border-b dark:border-b-[#061d39]">
         <div className="container">
           <div className="xl: w-[470] mx-auto">
-            <h2 className="heading text-center">Our Great Doctors</h2>
-            <p className="text_para text-center">
+            <h2 className="heading text-center dark:text-primaryColor">Our Great Doctors</h2>
+            <p className="text_para text-center dark:text-[#fde3e3]">
               World-class care for everyone. Our health services offers unmatched expert health care.
             </p>
           </div>
@@ -273,7 +273,7 @@ const Home = () =>
             </div>
 
             <div className="w-full md:w-1/2">
-              <h2 className="heading">
+              <h2 className="heading dark:text-primaryColor">
                 Most questions by our beloved patients
               </h2>
 
@@ -286,11 +286,11 @@ const Home = () =>
 
       {/* ========= testimonial ========= */}
 
-      <section>
+      <section className="px-4 dark:border-b dark:border-b-[#061d39]">
         <div className="container">
           <div className="xl: w-[470] mx-auto">
-            <h2 className="heading text-center">What our patients say</h2>
-            <p className="text_para text-center">
+            <h2 className="heading text-center dark:text-primaryColor">What our patients say</h2>
+            <p className="text_para text-center dark:text-[#fde3e3]">
               World-class care for everyone. Our health services offers unmatched expert health care.
             </p>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logos/Color logo - no background.svg";
 import { RiLinkedinFill } from "react-icons/ri";
-import {AiFillYoutube, AiFillGithub, AiOutlineInstagram } from "react-icons/ai";
+import { AiFillYoutube, AiFillGithub, AiOutlineInstagram } from "react-icons/ai";
 
 const socialLinks = [
   {
@@ -72,16 +72,78 @@ const quickLinks03 = [
   },
 ];
 
-const Footer = () => {
+const Footer = () =>
+{
 
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pb-16 pt-10">
-      <div className="container">
-        <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
-         <div>
+    <footer className="pb-16 px-8 pt-10">
+      <div className="container border-2">
+
+        <div className="flex md:justify-between justify-center items-center px-4 mb-6  flex-row flex-wrap">
+          <div>
+            <h2 className="text-[20px] leading-[30px] font-[700] text-teal-700 mb-6">
+              Quick Links
+            </h2>
+
+            <ul>
+              {quickLinks01.map((item, index) => (
+
+                <li key={index} className="mb-4">
+                  <Link
+                    to={item.path}
+                    className="text-[16px] leading-7 font-[400] hover:text-teal-700 dark:hover:text-teal-700 dark:text-[#fde3e3] text-textColor"
+                  >
+                    {item.display}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-[20px] leading-[30px]   text-teal-700 font-[700] mb-6 ">
+              I want to:
+            </h2>
+
+            <ul>
+              {quickLinks02.map((item, index) => (
+
+                <li key={index} className="mb-4">
+                  <Link
+                    to={item.path}
+                    className="text-[16px] leading-7 dark:text-[#fde3e3] dark:hover:text-teal-700 hover:text-teal-700  font-[400] text-textColor"
+                  >
+                    {item.display}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-teal-700">
+              Support
+            </h2>
+
+            <ul>
+              {quickLinks03.map((item, index) => (
+
+                <li key={index} className="mb-4">
+                  <Link
+                    to={item.path}
+                    className="text-[16px] leading-7 hover:text-teal-700 dark:hover:text-teal-700 font-[400] dark:text-[#fde3e3] text-textColor"
+                  >
+                    {item.display}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap justify-center items-center gap-x-[70px]">
           <img src={logo} alt="" className="w-[50%] sm:w-[200px] text-green" />
+
           <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
             Copyright {year} developed by henry and Theophilus all right reserved.
           </p>
@@ -91,74 +153,15 @@ const Footer = () => {
               <Link
                 to={Link.path}
                 key={index}
-                className="w-9 h-9 border-solid border-[#181A1E] rounded-full flex items-center justify-center group hover:bg-primaryColor hover:border-none"
+                className="w-9 h-9 border-solid border-[#181A1E]  rounded-full flex items-center justify-center group dark:hover:bg-teal-700 hover:bg-primaryColor hover:border-none"
               >
                 {link.icon}
               </Link>
             ))}
-           </div>
-         </div>
+          </div>
+        </div>
 
-         <div>  
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-            Quick Links
-          </h2>
-
-          <ul>
-            {quickLinks01.map((item, index) => (
-
-            <li key={index} className="mb-4">
-              <Link
-                to={item.path}
-                className="text-[16px] leading-7 font-[400] text-textColor"
-              >
-                {item.display}
-              </Link>
-            </li>
-            ))}
-          </ul>
-         </div>
-         <div>  
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-            I want to:
-          </h2>
-
-          <ul>
-            {quickLinks02.map((item, index) => (
-
-            <li key={index} className="mb-4">
-              <Link
-                to={item.path}
-                className="text-[16px] leading-7 font-[400] text-textColor"
-              >
-                {item.display}
-              </Link>
-            </li>
-            ))}
-          </ul>
-         </div>
-         <div>  
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-            Support
-          </h2>
-
-          <ul>
-            {quickLinks03.map((item, index) => (
-
-            <li key={index} className="mb-4">
-              <Link
-                to={item.path}
-                className="text-[16px] leading-7 font-[400] text-textColor"
-              >
-                {item.display}
-              </Link>
-            </li>
-            ))}
-          </ul>
-         </div>
-         </div>
-
-       </div>
+      </div>
     </footer>
   )
 };

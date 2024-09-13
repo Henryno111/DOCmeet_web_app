@@ -37,11 +37,11 @@ const Testimonial = () => {
                 }}
             >
                 <SwiperSlide>
-                    <div className="py-[30px] px-5 rounded-3">
+                    <div className="py-[30px] px-5 dark:border dark:border-[#061d39] rounded-[0.7rem]">
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} alt="" />
                             <div>
-                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
+                                <h4 className="text-[18px] leading-[30px] dark:text-teal-500 font-semibold text-headingColor">
                                     Muhibar Rahman
                                 </h4>
                                 <div className="flex items-center gap-[2px]">
@@ -54,17 +54,17 @@ const Testimonial = () => {
                             </div>
                         </div>
 
-                        <p className="text-[16px] leading-7 mt-4 text-textColor font-[400]">
+                        <p className="text-[16px] leading-7 mt-4 text-textColor dark:text-[#fde3e3] font-[400]">
                             "I have taken medical services from them. they treat so well and they are Providing the best medical services"
                         </p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="py-[30px] px-5 rounded-3">
+                    <div className="py-[30px] px-5 dark:border dark:border-[#061d39] rounded-[0.7rem]">
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} alt="" />
                             <div>
-                                <h4 className="text-{18px} leading-[30px] font-semibold text-headingColor">
+                                <h4 className="text-{18px} leading-[30px] font-semibold dark:text-teal-500 text-headingColor">
                                     Muhibar Rahman
                                 </h4>
                                 <div className="flex items-center gap-[2px]">
@@ -77,17 +77,17 @@ const Testimonial = () => {
                             </div>
                         </div>
 
-                        <p className="text-[16px] leading-7 mt-4 text-textColor font-[400]">
+                        <p className="text-[16px] leading-7 mt-4 dark:text-[#fde3e3] text-textColor font-[400]">
                             "I have taken medical services from them. they treat so well and they are Providing the best medical services"
                         </p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="py-[30px] px-5 rounded-3">
+                    <div className="py-[30px] px-5  dark:border dark:border-[#061d39] rounded-[0.7rem]">
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} alt="" />
                             <div>
-                                <h4 className="text-{18px} leading-[30px] font-semibold text-headingColor">
+                                <h4 className="text-{18px} leading-[30px] font-semibold dark:text-teal-500 text-headingColor">
                                     Muhibar Rahman
                                 </h4>
                                 <div className="flex items-center gap-[2px]">
@@ -100,7 +100,7 @@ const Testimonial = () => {
                             </div>
                         </div>
 
-                        <p className="text-[16px] leading-7 mt-4 text-textColor font-[400]">
+                        <p className="text-[16px] leading-7 mt-4 dark:text-[#fde3e3] text-textColor font-[400]">
                             "I have taken medical services from them. they treat so well and they are Providing the best medical services"
                         </p>
                     </div>
