@@ -9,7 +9,7 @@ const ServiceCard = ({ item, index }) => {
   
   return (
     <div className="py-[30px] px-3 lg:px-5">
-      <h2 className="text-[26px] leading-9 text-headingColor font-[700]">
+      <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-teal-600">
         {name}
       </h2>
       <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">

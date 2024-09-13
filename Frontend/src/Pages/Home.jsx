@@ -71,12 +71,12 @@ const Home = () =>
             </div>
             {/* ======== hero content ========= */}
 
-            <div className="flex gap-[30px] justify-end">
+            <div className="flex gap-[8px] justify-end">
               <div>
                 <img className="w-full rounded-lg" src={heroImg04} alt="" />
               </div>
               <div className="mt-[3]">
-                <img src={heroImg05} alt="" className="w-full mb-[30px] rounded-lg" />
+                <img src={heroImg05} alt="" className="w-full mb-[8px] rounded-lg" />
                 <img src={heroImg03} alt="" className="w-full" />
               </div>
             </div>
@@ -90,12 +90,12 @@ const Home = () =>
       <section>
         <div className="container">
           <div className="lg:w-[470px] mx-auto">
-            <h2 className="heading text-center">
+            <h2 className="heading text-center text-slate-900 dark:text-teal-600">
               Providing the best medical services
             </h2>
-            <p className="text_para text-center">
+            <p className="text_para text-center dark:text-white">
               World-class care for everyone. Our health system offers unmatched,
-              export health care.
+              export health care. From the lab to the Clinic.
             </p>
           </div>
 
@@ -109,15 +109,16 @@ const Home = () =>
               </div>
 
               <div className="mt-[30px]">
-                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                <h2 className="text-[26px] leading-9 text-teal-600 font-[700] text-center">
                   Find a Doctor
                 </h2>
-                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health system offers unmatched, expert healthcare. From the lab to the Clinic
+                <p className="text-[16px] leading-7 dark:text-white text-textColor font-[400] mt-4 text-center">
+                  Connect with highly skilled and compassionate medical professionals. Browse our network of
+                  experienced doctors across various specialties to find the right one for your specific needs.
                 </p>
 
-                <Link to='/doctors' className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
-                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                <Link to='/doctors' className="w-[44px] h-[44px] rounded-full border border-teal-600 border-solid mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
+                  <BsArrowRight className="group-hover:text-white w-6 h-5 text-teal-400" />
                 </Link>
               </div>
             </div>
@@ -128,16 +129,17 @@ const Home = () =>
               </div>
 
               <div className="mt-[30px]">
-                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                <h2 className="text-[26px] leading-9  text-teal-600 font-[700] text-center">
                   Find a Location
                 </h2>
-                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health system offers unmatched, expert healthcare. From the lab to the Clinic
+                <p className="text-[16px] leading-7  dark:text-white text-textColor font-[400] mt-4 text-center">
+                  Locate top-tier medical facilities near you. Our state-of-the-art clinics and hospitals are conveniently
+                  situated to ensure you receive the best care, wherever you are.
                 </p>
 
                 <Link
-                  to='/doctors' className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
-                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                  to='/doctors' className="w-[44px] h-[44px] rounded-full border border-solid border-teal-600  mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
+                  <BsArrowRight className="group-hover:text-white w-6 h-5 text-teal-400" />
                 </Link>
               </div>
             </div>
@@ -148,15 +150,16 @@ const Home = () =>
               </div>
 
               <div className="mt-[30px]">
-                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                <h2 className="text-[26px] leading-9  text-teal-600  font-[700] text-center">
                   Book an Appointment
                 </h2>
-                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone. Our health system offers unmatched, expert healthcare. From the lab to the Clinic
+                <p className="text-[16px] leading-7  dark:text-white text-textColor font-[400] mt-4 text-center">
+                  Schedule your appointments with ease. Our intuitive system allows you to book consultations
+                  quickly, ensuring timely access to the care you need without the hassle.
                 </p>
 
-                <Link to='/doctors' className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
-                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                <Link to='/doctors' className="w-[44px] h-[44px] rounded-full border border-solid border-teal-600 mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none">
+                  <BsArrowRight className="group-hover:text-white w-6 h-5 text-teal-400" />
                 </Link>
               </div>
             </div>
