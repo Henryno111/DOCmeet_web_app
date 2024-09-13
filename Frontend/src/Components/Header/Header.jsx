@@ -58,7 +58,7 @@ const Header = () =>
   const toggleMenu = () => menuRef.current.classList.toggle('show_menu')
 
   return (
-    <header className="header flex items-center !py-10 dark:bg-[#011027] dark:border-b dark:border-b-[#061d39] bg-emerald-50" ref={headerRef}>
+    <header className="header flex items-center !py-10 dark:bg-[#011027] px-4 bg-emerald-50" ref={headerRef}>
       <div className="container">
         <div className="flex items-center justify-between">
           {/* ====== logo ======= */}
@@ -99,7 +99,7 @@ const Header = () =>
             </div>) : (
               <>
                 <Link to='/login'>
-                  <button className="bg-primaryColor dark:bg-transparent dark:border dark:border-[#11315a]  px-6 dark:px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                  <button className="bg-primaryColor dark:hover:bg-[#2d3644] dark:bg-[#070d24] dark:border dark:border-[#11315a]  px-6 dark:px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
                     Login
                   </button>
                 </Link>
