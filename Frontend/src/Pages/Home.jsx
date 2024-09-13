@@ -176,8 +176,8 @@ const Home = () =>
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">Our medical services</h2>
-            <p className="text_para text-center">
+            <h2 className="heading text-center dark:text-primaryColor">Our medical services</h2>
+            <p className="text_para text-center dark:text-[#fde3e3]">
               World-class care for everyone. Our health services offers unmatched
               expert health care.
             </p>
