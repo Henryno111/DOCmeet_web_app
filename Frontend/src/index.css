@@ -34,7 +34,8 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 216, 95%, 8%;
+    /* --background: 222.2 84% 4.9%; */
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -78,11 +79,11 @@
   }
 
   .header {
-    @apply bg-[url('./assets/images/mask.png')] bg-no-repeat bg-center bg-cover w-full h-[70px] leading-[100px];
+    @apply bg-[url('./assets/images/mask.png')] dark:bg-none bg-no-repeat bg-center bg-cover w-full h-[70px] leading-[100px];
   }
 
   .hero_section {
-    @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-center bg-cover;
+    @apply bg-[url('./assets/images/hero-bg.png')] dark:bg-none bg-no-repeat bg-center bg-cover;
   }
 
   .form_label {

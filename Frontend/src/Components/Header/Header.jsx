@@ -58,7 +58,7 @@ const Header = () =>
   const toggleMenu = () => menuRef.current.classList.toggle('show_menu')
 
   return (
-    <header className="header flex items-center bg-emerald-50" ref={headerRef}>
+    <header className="header flex items-center !py-10 dark:bg-[#011027] dark:border-b dark:border-b-[#061d39] bg-emerald-50" ref={headerRef}>
       <div className="container">
         <div className="flex items-center justify-between">
           {/* ====== logo ======= */}
@@ -73,7 +73,7 @@ const Header = () =>
             <ul className="menu flex items-center gap-[2.7rem]">
               {
                 navLinks.map((link, index) => (<li key={index}>
-                  <NavLink to={link.path} className={navClass => navClass.isActive ? "text-primaryColor text-[16px] leading-7 font-[600]" : "text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor"}
+                  <NavLink to={link.path} className={navClass => navClass.isActive ? "text-primaryColor  dark:text-teal-600 text-[16px] leading-7 font-[600]" : "text-textColor dark:text-[#fee0e0] text-[16px] leading-7 font-[500] dark:hover:text-teal-600 hover:text-primaryColor"}
                   >
                     {link.display}
                   </NavLink>
@@ -97,13 +97,16 @@ const Header = () =>
 
               </Link>
             </div>) : (
-              <Link to='/login'>
-                <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
-                  Login
-                </button>
-              </Link>
+              <>
+                <Link to='/login'>
+                  <button className="bg-primaryColor dark:bg-transparent dark:border dark:border-[#11315a]  px-6 dark:px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                    Login
+                  </button>
+                </Link>
+                <ThemeToggler />
+              </>
             )}
-            <ThemeToggler />
+
             <span className="md:hidden" onClick={toggleMenu}>
               <BiMenu className='w-6 h-6 cursor-pointer' />
             </span>
