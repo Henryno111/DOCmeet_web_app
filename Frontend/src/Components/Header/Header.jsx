@@ -1,5 +1,6 @@
 import { useEffect, useRef, useContext } from "react";
 import logo2 from "../../assets/Logos/Color logo - no background.svg";
+import logo from "../../assets/Logos/logo_mobile.png";
 // import logo2 from "../../assets/Logos/Color logo with background.svg";
 import { Link, NavLink } from 'react-router-dom';
 import { BiMenu } from "react-icons/bi";
@@ -58,19 +59,24 @@ const Header = () =>
   const toggleMenu = () => menuRef.current.classList.toggle('show_menu')
 
   return (
-    <header className="header flex items-center !py-10 dark:bg-[#011027] px-4 bg-emerald-50" ref={headerRef}>
+    <header className="header flex items-center !py-10 dark:bg-[#011027] xm:px-4 bg-emerald-50" ref={headerRef}>
       <div className="container">
         <div className="flex items-center justify-between">
           {/* ====== logo ======= */}
           <div>
             <Link to="/">
-              <img src={logo2} alt="" className="w-[50%] sm:w-[200px] text-green" />
+              <img src={logo2} alt="" className="hidden xm:block xm:w-[160px] sm:w-[200px] text-green " />
+              <span className="flex ">
+              <img src={logo} alt="" className="mt-1 xm:hidden w-[40px] h-[50px] inline" />
+              <span className="text-teal-500 text-lg mt-4 xm:hidden font-bold">DOCmeet</span>
+              </span>
+              
             </Link>
           </div>
 
           {/* ======= menu ========= */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-            <ul className="menu flex items-center gap-[2.7rem]">
+            <ul className="menu dark:bg-slate-950 flex items-center gap-[2.7rem]">
               {
                 navLinks.map((link, index) => (<li key={index}>
                   <NavLink to={link.path} className={navClass => navClass.isActive ? "text-primaryColor  dark:text-teal-600 text-[16px] leading-7 font-[600]" : "text-textColor dark:text-[#fee0e0] text-[16px] leading-7 font-[500] dark:hover:text-teal-600 hover:text-primaryColor"}
@@ -84,7 +90,7 @@ const Header = () =>
 
 
           {/* ====== nav right ======== */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 xm:gap-x-8">
             {token && user ? (<div >
               <Link to={`${user?.role?.includes("doctor") ? "/doctors/profile/me" : "/users/profile/me"}`}>
 
@@ -99,7 +105,7 @@ const Header = () =>
             </div>) : (
               <>
                 <Link to='/login'>
-                  <button className="bg-primaryColor dark:hover:bg-[#2d3644] dark:bg-[#070d24] dark:border dark:border-[#11315a]  px-6 dark:px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                  <button className="bg-primaryColor dark:hover:bg-[#2d3644] dark:bg-[#070d24] dark:border dark:border-[#11315a]  px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
                     Login
                   </button>
                 </Link>
@@ -107,7 +113,7 @@ const Header = () =>
               </>
             )}
 
-            <span className="md:hidden" onClick={toggleMenu}>
+            <span className="lg:hidden" onClick={toggleMenu}>
               <BiMenu className='w-6 h-6 cursor-pointer' />
             </span>
           </div>
