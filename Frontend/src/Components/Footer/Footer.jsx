@@ -81,7 +81,7 @@ const Footer = () =>
     <footer className="pb-16 px-8 pt-10">
       <div className="container border-2">
 
-        <div className="flex md:justify-between justify-center items-center px-4 mb-6  flex-row flex-wrap">
+        <div className="flex lg:justify-between justify-center  px-4 mb-6  flex-wrap">
           <div>
             <h2 className="text-[20px] leading-[30px] font-[700] text-teal-700 mb-6">
               Quick Links
@@ -141,7 +141,7 @@ const Footer = () =>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-x-[70px]">
+        <div className="flex flex-wrap  md:justify-between justify-center items-center gap-x-[70px]">
           <img src={logo} alt="" className="w-[50%] sm:w-[200px] text-green" />
 
           <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
