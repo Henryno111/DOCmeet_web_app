@@ -1,11 +1,12 @@
 import express from "express";
-import {
-  signUp,
-  activateUser,
-  login,
-  refreshToken,
-  updatePassword,
-} from "../controllers/authController.js";
+import
+  {
+    signUp,
+    activateUser,
+    login,
+    refreshToken,
+    updatePassword,
+  } from "../controllers/authController.js";
 import { isAuthenticated } from "../middlewares/protectRoutes.js";
 
 const router = express.Router();

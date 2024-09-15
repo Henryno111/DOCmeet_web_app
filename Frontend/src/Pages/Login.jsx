@@ -5,10 +5,19 @@ import RotateLoader from "react-spinners/RotateLoader";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import { authContext } from "../context/AuthContext.jsx";
+import ForgotPassword from "./ForgotPassword";
 
 const Login = () =>
 {
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const toggleModal = () =>
+    {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    const [showOverlay, setShowOverlay] = useState(false);
     const [formErrors, setFormErrors] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -25,6 +34,18 @@ const Login = () =>
             .required("Please enter your email!"),
         password: Yup.string().required("Please enter your password!").min(6)
     });
+
+    const handleForgotPassword = () =>
+    {
+        setIsModalOpen(!isModalOpen);
+        setShowOverlay(true)
+    }
+
+    const handleCloseForgotPasswordForm = () =>
+        {
+            setIsModalOpen(!isModalOpen);
+            setShowOverlay(false)
+        }
 
     const handleInputChange = e =>
     {
@@ -160,18 +181,25 @@ const Login = () =>
                                 Register
                             </Link>
                         </div>
-                        <Link
-                            to="/forgot-password"
-                            className="text-primaryColor text-sm dark:text-teal-500 font-medium ml-3"
+                        <button
+                            onClick={handleForgotPassword}
+                            className="text-primaryColor bg-transparent border-none text-sm dark:text-teal-500 font-medium ml-3"
                         >
                             Reset Password
-                        </Link>
-                    </div>
+                        </button>
 
+                    </div>
                 </form>
             </div>
 
-        </section>
+            {showOverlay && (<div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-2 flex justify-center items-center `}></div>)}
+            {isModalOpen && (< div className="p-4 md:p-5 text-center">
+                <ForgotPassword onClick={handleCloseForgotPasswordForm} />
+            </div>
+            )
+            }
+
+        </section >
     )
 };
 

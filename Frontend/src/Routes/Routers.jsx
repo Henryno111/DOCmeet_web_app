@@ -14,6 +14,8 @@ import ProtectedRoute from './ProtectedRoute'
 import CheckoutSuccess from '../Pages/Doctors/CheckoutSucess'
 import CheckoutFail from '../Pages/Doctors/CheckoutFail'
 import AdminDashboard from '../Dashboard/admin-account/AdminDashboard'
+import ForgotPassword from '@/Pages/ForgotPassword'
+import ResetPassword from '@/Pages/ResetPassword'
 
 
 const Routers = () => {
@@ -27,6 +29,8 @@ const Routers = () => {
         <Route path="/verify" element={<Verification/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/services" element={<Services/>} />
+        <Route path="/forgot-password" element={<ForgotPassword/>} />
+        <Route path="/reset-password" element={<ResetPassword/>} />
         <Route path="/checkout-success" element={<CheckoutSuccess />} />
         <Route path="/checkout-fail" element={<CheckoutFail />} />
         <Route 
