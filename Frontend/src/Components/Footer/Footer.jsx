@@ -78,8 +78,8 @@ const Footer = () =>
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pb-16 px-8 pt-10">
-      <div className="container border-2">
+    <footer className="pb-0 px-8 pt-10">
+      <div className="container">
 
         <div className="flex lg:justify-between justify-center  px-4 mb-6  flex-wrap">
           <div>

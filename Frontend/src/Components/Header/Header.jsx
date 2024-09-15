@@ -92,6 +92,7 @@ const Header = () =>
           {/* ====== nav right ======== */}
           <div className="flex items-center gap-4 xm:gap-x-8">
             {token && user ? (<div >
+              <ThemeToggler />
               <Link to={`${user?.role?.includes("doctor") ? "/doctors/profile/me" : "/users/profile/me"}`}>
 
                 {user.photo !== null && user.photo !== "default.jpg"
