@@ -67,10 +67,10 @@ const Header = () =>
             <Link to="/">
               <img src={logo2} alt="" className="hidden xm:block xm:w-[160px] sm:w-[200px] text-green " />
               <span className="flex ">
-              <img src={logo} alt="" className="mt-1 xm:hidden w-[40px] h-[50px] inline" />
-              <span className="text-teal-500 text-lg mt-4 xm:hidden font-bold">DOCmeet</span>
+                <img src={logo} alt="" className="mt-1 xm:hidden w-[40px] h-[50px] inline" />
+                <span className="text-teal-500 text-lg mt-4 xm:hidden font-bold">DOCmeet</span>
               </span>
-              
+
             </Link>
           </div>
 
@@ -92,7 +92,6 @@ const Header = () =>
           {/* ====== nav right ======== */}
           <div className="flex items-center gap-4 xm:gap-x-8">
             {token && user ? (<div >
-              <ThemeToggler />
               <Link to={`${user?.role?.includes("doctor") ? "/doctors/profile/me" : "/users/profile/me"}`}>
 
                 {user.photo !== null && user.photo !== "default.jpg"
@@ -110,10 +109,9 @@ const Header = () =>
                     Login
                   </button>
                 </Link>
-                <ThemeToggler />
               </>
             )}
-
+            <ThemeToggler />
             <span className="lg:hidden" onClick={toggleMenu}>
               <BiMenu className='w-6 h-6 cursor-pointer' />
             </span>
