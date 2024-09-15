@@ -129,7 +129,7 @@ const Signup = () => {
 
                 {/* ======== sign up form ======= */}
                 <div className="rounded-l-lg lg:pl-16 py-8 shadow-md lg:shadow-none lg:px-5 md:w-[80%] px-7 lg:w-full">
-                    <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-8">
+                    <h3 className="text-headingColor dark:text-white text-[22px] leading-9 font-bold mb-8">
                         Create an
                         <span className="text-primaryColor px-2">
                             account
@@ -145,9 +145,9 @@ const Signup = () => {
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 required
-                                className=" w-full pr-4 py-3 border-b border-solid border-[#0066ff61] 
+                                className=" w-full  p-3 border-b rounded-lg border-[#0066ff61] 
                                 focus:outline-none focus:border-b-primaryColor text-[16px] leading-7
-                                text-headingColor placeholder:text-textColor  cursor-pointer"
+                                text-headingColor dark:text-white placeholder:text-textColor"
                             />
                         </div>
                         {formErrors && formErrors.name && (
@@ -162,9 +162,9 @@ const Signup = () => {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 required
-                                className=" w-full pr-4 py-3 border-b border-solid border-[#0066ff61] 
+                                className=" w-full  p-3 border-b rounded-lg  border-[#0066ff61] 
                                 focus:outline-none focus:border-b-primaryColor text-[16px] leading-7
-                                text-headingColor placeholder:text-textColor  cursor-pointer"
+                                text-headingColor dark:text-white placeholder:text-textColor"
                             />
                         </div>
                         {formErrors && formErrors.email && (
@@ -179,9 +179,9 @@ const Signup = () => {
                                 value={formData.password}
                                 onChange={handleInputChange}
                                 required
-                                className=" w-full pr-4 py-3 border-b border-solid border-[#0066ff61] 
+                                className=" w-full p-3 border-b rounded-lg border-[#0066ff61] 
                                 focus:outline-none focus:border-b-primaryColor text-[16px] leading-7
-                                text-headingColor placeholder:text-textColor  cursor-pointer"
+                                text-headingColor dark:text-white placeholder:text-textColor"
                             />
                         </div>
                         {formErrors && formErrors.password  && (
@@ -196,9 +196,9 @@ const Signup = () => {
                                 value={formData.confirmPassword}
                                 onChange={handleInputChange}
                                 required
-                                className=" w-full pr-4 py-3 border-b border-solid border-[#0066ff61] 
+                                className=" w-full p-3 border-b rounded-lg border-[#0066ff61] 
                                 focus:outline-none focus:border-b-primaryColor text-[16px] leading-7
-                                text-headingColor placeholder:text-textColor  cursor-pointer"
+                                text-headingColor dark:text-white placeholder:text-textColor "
                             />
                         </div>
                         {formErrors && formErrors.confirmPassword && (
@@ -208,15 +208,15 @@ const Signup = () => {
                         <div className="mb-5 flex items-center justify-between">
                             <label 
                                 htmlFor="role"
-                                className="text-headingColor font-bold text-[16px] leading-7"
+                                className="text-headingColor dark:text-white font-bold text-[16px] leading-7"
                             >
                                 Are you a:
                                 <select
                                     name="role"
                                     value={formData.role}
                                     onChange={handleInputChange}
-                                    className="text-textColor font-semibold text-[15px] leading-7 px-4
-                                        py-3 focus:outline-none"
+                                    className="text-textColor dark:text-white font-semibold text-[15px] leading-7 px-3
+                                        py-3 focus:outline-none dark:border dark:border-[#0066ff61] rounded-lg ml-1"
                                 >
                                     <option value="patient">Patient</option>
                                     <option value="doctor">Doctor</option>
@@ -226,15 +226,15 @@ const Signup = () => {
 
                             <label 
                                 htmlFor="gender"
-                                className="text-headingColor font-bold text-[16px] leading-7"
+                                className="text-headingColor dark:text-white font-bold text-[16px] leading-7"
                             >
                                 Gender:
                                 <select
                                     name="gender"
                                     value={formData.gender}
                                     onChange={handleInputChange}
-                                    className="text-textColor font-semibold text-[15px] leading-7 px-4
-                                        py-3 focus:outline-none"
+                                    className="text-textColor dark:text-white font-semibold text-[15px] leading-7 px-3
+                                        py-3 focus:outline-none dark:border dark:border-[#0066ff61] rounded-lg ml-1"
                                 >
                                     <option value="">Select</option>
                                     <option value="male">Male</option>
@@ -268,15 +268,14 @@ const Signup = () => {
                                     id="customFile"
                                     onChange={handleFileInputChange}
                                     accept=".jpg, .png" 
-                                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                                    className="absolute top-0 left-0 w-full h-full opacity-0"
                                 />
 
                                 <label 
                                     htmlFor="customFile"
                                     className="absolute top-0 left-0 w-full h-full flex items-center 
                                         px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden
-                                        bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate
-                                        cursor-pointer"
+                                        bg-[#0066ff46] dark:text-white dark:bg-[#0026ff46] text-headingColor font-semibold rounded-lg truncate"
                                 >
                                     Upload Photo
                                 </label>
