@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import RotateLoader from "react-spinners/RotateLoader";
@@ -11,11 +11,7 @@ const Login = () =>
 {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const toggleModal = () =>
-    {
-        setIsModalOpen(!isModalOpen);
-    };
+    const modalRef = useRef(null);
 
     const [showOverlay, setShowOverlay] = useState(false);
     const [formErrors, setFormErrors] = useState(null);
@@ -42,10 +38,30 @@ const Login = () =>
     }
 
     const handleCloseForgotPasswordForm = () =>
-        {
-            setIsModalOpen(!isModalOpen);
-            setShowOverlay(false)
+    {
+        setIsModalOpen(!isModalOpen);
+        setShowOverlay(false)
+    }
+
+    // Close modal when clicking outside of it
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                handleCloseForgotPasswordForm();
+            }
+        };
+
+        if (isModalOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
         }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isModalOpen]);
+
 
     const handleInputChange = e =>
     {
@@ -193,7 +209,7 @@ const Login = () =>
             </div>
 
             {showOverlay && (<div className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-2 flex justify-center items-center `}></div>)}
-            {isModalOpen && (< div className="p-4 md:p-5 text-center">
+            {isModalOpen && (< div ref={modalRef} className="p-4 md:p-5 text-center">
                 <ForgotPassword onClick={handleCloseForgotPasswordForm} />
             </div>
             )
