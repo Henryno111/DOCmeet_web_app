@@ -32,7 +32,7 @@ export const signUp = catchAsync(async (req, res, next) => {
   const { email, name, password, confirmPassword, role, gender, photo } =
     req.body;
 
-  console.log(req.body);
+
 
   const allowedRole = ["patient", "doctor"];
   if (!allowedRole.includes(req.body.role)) {
@@ -218,3 +218,150 @@ export const refreshToken = catchAsync(async (req, res, next) => {
     refreshToken,
   });
 });
+
+// update password
+export const updatePassword = catchAsync(async (req, res, next) => {
+  const { oldPassword, newPassword, passwordConfirm } = req.body;
+
+  if (!oldPassword || !newPassword)
+    return next(new AppError("Please provide your old and new passwords", 400));
+
+  if (!passwordConfirm)
+    return next(new AppError("Please confirm your password", 400));
+
+  // 1) Get user from collection
+  let user;
+
+  const patient = await User.findById(req.user._id).select("+password");
+  const doctor = await Doctor.findById(req.user._id).select("+password");
+
+  if (patient) {
+    user = patient;
+  } else if (doctor) {
+    user = doctor;
+  }
+ 
+
+  if (user?.password === "undefined") {
+    return next(new AppError("Invalid user", 400));
+  }
+  // 2) Check if POSTed current password is correct
+  if (!(await user.correctPassword(oldPassword, user.password))) {
+    return next(new AppError("Your current password is wrong.", 401));
+  }
+
+  // 3) If so, update password
+  user.password = newPassword;
+  user.passwordConfirm = passwordConfirm;
+  await user.save();
+  // User.findByIdAndUpdate will NOT work as intended!
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export const forgotPassword = catchAsync(async (req, res, next) => {
+  // 1) Get user based on POSTed email
+  const { email } = req.body;
+
+  let user;
+
+  const patient = await User.findOne({ email });
+  const doctor = await Doctor.findOne({ email });
+
+  if (patient) {
+    user = patient;
+  } else if (doctor) {
+    user = doctor;
+  }
+
+  if (!user) {
+    return next(new AppError("There is no user with email address.", 404));
+  }
+
+  // 2) Generate the random reset token
+  const resetToken = user.createPasswordResetToken();
+  await user.save({ validateBeforeSave: false });
+
+  // 3) Send it to user's email
+  try {
+    const data = {
+      user: { name: user.name },
+      resetToken,
+      resetURL: `${req.protocol}://${req.get(
+        "host"
+      )}/api/v1/users/reset-password/${resetToken}`,
+    };
+
+    console.log(data.resetURL);
+
+    await new Email(user, data).sendPasswordReset();
+
+    res.status(200).json({
+      status: "success",
+      message: "Token sent to email!",
+    });
+  } catch (err) {
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save({ validateBeforeSave: false });
+
+    return next(
+      new AppError(
+        "There was an error sending the email. Try again later!",
+        500
+      )
+    );
+  }
+});
+
+export const resetPassword = catchAsync(async (req, res, next) => {
+  // 1) Get user based on the token
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  
+    let user;
+
+  const patient = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  const doctor = await Doctor.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+
+  if (patient) {
+    user = patient;
+  } else if (doctor) {
+    user = doctor;
+  }
+
+
+  // 2) If token has not expired, and there is user, set the new password
+  if (!user) {
+    return next(new AppError("Token is invalid or has expired", 400));
+  }
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+
+  // 3) Update changedPasswordAt property for the user
+  // 4) Log the user in, send JWT
+  res.status(200).json({
+    status: "success",
+    message:
+      "Password reset successful. Please, log in with your new password.",
+  });
+  // sendToken(user, 200, res);
+});
+

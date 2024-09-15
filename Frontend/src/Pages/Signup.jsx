@@ -112,8 +112,7 @@ const Signup = () => {
 
 
   return (
-    <section className="px-5 xl:px-0 py-0">
-
+    <section className="px-5 xl:px-0 pt-3 pb-8">
         <div className="max-w-[1170px] mx-auto">
             <div className="grid grid-cols-1 md:place-items-center lg:grid-cols-2">
                 {/* ====== img box ======= */}
@@ -292,7 +291,7 @@ const Signup = () => {
                             </button>
                         </div>
 
-                        <p className="mt-5 text-textColor text-center">
+                        <p className="mt-5 text-textColor dark:text-white text-center">
                             Already have an account?
                             <Link 
                                 to="/login"

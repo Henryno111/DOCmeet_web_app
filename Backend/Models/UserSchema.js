@@ -36,7 +36,8 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Please confirm your password"],
       validate: {
         // This only works on CREATE and SAVE!!!
-        validator: function (el) {
+        validator: function (el)
+        {
           return el === this.password;
         },
         message: "Passwords are not the same!",
@@ -80,9 +81,11 @@ const UserSchema = new mongoose.Schema(
 
 UserSchema.index({ role: 1 });
 
-UserSchema.pre("save", async function (next) {
+UserSchema.pre("save", async function (next)
+{
   // Only run this function if password was actually modified
-  if (!this.isModified("password") || !this.hashPassword) {
+  if (!this.isModified("password") || !this.hashPassword)
+  {
     this.hashPassword = undefined;
     return next();
   }
@@ -97,7 +100,8 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-UserSchema.pre(/^find/, function (next) {
+UserSchema.pre(/^find/, function (next)
+{
   // this points to the current query
   if (this.getOptions().role === "admin") return next();
 
@@ -105,8 +109,10 @@ UserSchema.pre(/^find/, function (next) {
   next();
 });
 
-UserSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
-  if (this.passwordChangedAt) {
+UserSchema.methods.changedPasswordAfter = function (JWTTimestamp)
+{
+  if (this.passwordChangedAt)
+  {
     const changedTimestamp = parseInt(
       this.passwordChangedAt.getTime() / 1000,
       10
@@ -119,7 +125,8 @@ UserSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   return false;
 };
 
-UserSchema.methods.createPasswordResetToken = function () {
+UserSchema.methods.createPasswordResetToken = function ()
+{
   const resetToken = crypto.randomBytes(32).toString("hex");
 
   this.passwordResetToken = crypto
