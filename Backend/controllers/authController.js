@@ -2,18 +2,20 @@ import catchAsync from "../utils/catchAsync.js";
 import User from "../Models/UserSchema.js";
 import Doctor from "../Models/DoctorSchema.js";
 import AppError from "../errorHandlers/appError.js";
-import {
-  SignInAccessToken,
-  SignInRefreshToken,
-  sendToken,
-} from "../utils/sendToken.js";
+import
+  {
+    SignInAccessToken,
+    SignInRefreshToken,
+    sendToken,
+  } from "../utils/sendToken.js";
 import Email from "../emails/email.js";
 import jwt from "jsonwebtoken";
 import { correctPassword } from "../services/passwordServices.js";
 import Notification from "../Models/notificationSchema.js";
 
 // Create activation token and the token
-export const createActivationToken = (user) => {
+export const createActivationToken = (user) =>
+{
   const activationCode = Math.floor(1000 + Math.random() * 9000).toString();
 
   const activationToken = jwt.sign(
@@ -28,14 +30,16 @@ export const createActivationToken = (user) => {
 };
 
 // Verify Account before saving it.
-export const signUp = catchAsync(async (req, res, next) => {
+export const signUp = catchAsync(async (req, res, next) =>
+{
   const { email, name, password, confirmPassword, role, gender, photo } =
     req.body;
 
 
 
   const allowedRole = ["patient", "doctor"];
-  if (!allowedRole.includes(req.body.role)) {
+  if (!allowedRole.includes(req.body.role))
+  {
     return next(
       new AppError(`The specified role "${req.body.role}" is invalid`)
     );
@@ -74,16 +78,19 @@ export const signUp = catchAsync(async (req, res, next) => {
 });
 
 // Sign Up the user - persist user data to database
-export const activateUser = catchAsync(async (req, res, next) => {
+export const activateUser = catchAsync(async (req, res, next) =>
+{
   //   1) Getting token and check of it's there
   let activation_token;
 
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
-  ) {
+  )
+  {
     activation_token = req.headers.authorization.split(" ")[1];
-  } else {
+  } else
+  {
     activation_token = req.body.activation_token;
   }
 
@@ -99,7 +106,8 @@ export const activateUser = catchAsync(async (req, res, next) => {
 
   let user = null;
 
-  if (role === "patient") {
+  if (role === "patient")
+  {
     user = await User.create({
       email,
       name,
@@ -109,7 +117,8 @@ export const activateUser = catchAsync(async (req, res, next) => {
       gender,
       photo,
     });
-  } else if (role === "doctor") {
+  } else if (role === "doctor")
+  {
     user = await Doctor.create({
       email,
       name,
@@ -125,11 +134,13 @@ export const activateUser = catchAsync(async (req, res, next) => {
 });
 
 // Login the user
-export const login = catchAsync(async (req, res, next) => {
+export const login = catchAsync(async (req, res, next) =>
+{
   const { email, password } = req.body;
 
   // 1) Check if email and password exist
-  if (!email || !password) {
+  if (!email || !password)
+  {
     return next(new AppError("Please provide email and password!", 400));
   }
 
@@ -139,13 +150,16 @@ export const login = catchAsync(async (req, res, next) => {
   const patient = await User.findOne({ email }).select("+password");
   const doctor = await Doctor.findOne({ email }).select("+password");
 
-  if (patient) {
+  if (patient)
+  {
     user = patient;
-  } else if (doctor) {
+  } else if (doctor)
+  {
     user = doctor;
   }
 
-  if (!user || !(await correctPassword(password, user.password))) {
+  if (!user || !(await correctPassword(password, user.password)))
+  {
     return next(new AppError("Incorrect email or password", 401));
   }
 
@@ -154,13 +168,15 @@ export const login = catchAsync(async (req, res, next) => {
 });
 
 // update access token
-export const refreshToken = catchAsync(async (req, res, next) => {
+export const refreshToken = catchAsync(async (req, res, next) =>
+{
   let refresh_token;
 
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
-  ) {
+  )
+  {
     refresh_token = req.headers.authorization.split(" ")[1];
   }
 
@@ -177,10 +193,12 @@ export const refreshToken = catchAsync(async (req, res, next) => {
   //   }
   const patient = await User.findById(decoded.id);
 
-  if (!patient) {
+  if (!patient)
+  {
     const doctor = await Doctor.findById(decoded.id);
     currentUser = doctor;
-  } else {
+  } else
+  {
     currentUser = patient;
   }
 
@@ -188,7 +206,8 @@ export const refreshToken = catchAsync(async (req, res, next) => {
     return next(new AppError("Please login to access these resources!", 400));
 
   // 4) Check if user changed password after the token was issued
-  if (currentUser.changedPasswordAfter(decoded.iat)) {
+  if (currentUser.changedPasswordAfter(decoded.iat))
+  {
     return next(
       new AppError("User recently changed password! Please log in again.", 401)
     );
@@ -220,7 +239,8 @@ export const refreshToken = catchAsync(async (req, res, next) => {
 });
 
 // update password
-export const updatePassword = catchAsync(async (req, res, next) => {
+export const updatePassword = catchAsync(async (req, res, next) =>
+{
   const { oldPassword, newPassword, passwordConfirm } = req.body;
 
   if (!oldPassword || !newPassword)
@@ -235,18 +255,22 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   const patient = await User.findById(req.user._id).select("+password");
   const doctor = await Doctor.findById(req.user._id).select("+password");
 
-  if (patient) {
+  if (patient)
+  {
     user = patient;
-  } else if (doctor) {
+  } else if (doctor)
+  {
     user = doctor;
   }
- 
 
-  if (user?.password === "undefined") {
+
+  if (user?.password === "undefined")
+  {
     return next(new AppError("Invalid user", 400));
   }
   // 2) Check if POSTed current password is correct
-  if (!(await user.correctPassword(oldPassword, user.password))) {
+  if (!(await user.correctPassword(oldPassword, user.password)))
+  {
     return next(new AppError("Your current password is wrong.", 401));
   }
 
@@ -262,7 +286,8 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   });
 });
 
-export const forgotPassword = catchAsync(async (req, res, next) => {
+export const forgotPassword = catchAsync(async (req, res, next) =>
+{
   // 1) Get user based on POSTed email
   const { email } = req.body;
 
@@ -271,13 +296,16 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   const patient = await User.findOne({ email });
   const doctor = await Doctor.findOne({ email });
 
-  if (patient) {
+  if (patient)
+  {
     user = patient;
-  } else if (doctor) {
+  } else if (doctor)
+  {
     user = doctor;
   }
 
-  if (!user) {
+  if (!user)
+  {
     return next(new AppError("There is no user with email address.", 404));
   }
 
@@ -286,7 +314,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // 3) Send it to user's email
-  try {
+  try
+  {
     const data = {
       user: { name: user.name },
       resetToken,
@@ -303,7 +332,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
       status: "success",
       message: "Token sent to email!",
     });
-  } catch (err) {
+  } catch (err)
+  {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
@@ -317,15 +347,16 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
-export const resetPassword = catchAsync(async (req, res, next) => {
+export const resetPassword = catchAsync(async (req, res, next) =>
+{
   // 1) Get user based on the token
   const hashedToken = crypto
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
 
-  
-    let user;
+
+  let user;
 
   const patient = await User.findOne({
     passwordResetToken: hashedToken,
@@ -338,15 +369,18 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   });
 
 
-  if (patient) {
+  if (patient)
+  {
     user = patient;
-  } else if (doctor) {
+  } else if (doctor)
+  {
     user = doctor;
   }
 
 
   // 2) If token has not expired, and there is user, set the new password
-  if (!user) {
+  if (!user)
+  {
     return next(new AppError("Token is invalid or has expired", 400));
   }
   user.password = req.body.password;

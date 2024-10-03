@@ -6,7 +6,7 @@ import RotateLoader from "react-spinners/RotateLoader";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 
-const ForgotPassword = ({onClick}) =>
+const ForgotPassword = ({ onClick }) =>
 {
 
     const [formErrors, setFormErrors] = useState(null);

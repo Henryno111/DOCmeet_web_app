@@ -1,27 +1,32 @@
-import {useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { authContext } from '../context/AuthContext';
 
-const useFetchData = (url, key=null) => {
+const useFetchData = (url, key = null) =>
+{
 
-    const [data, setData] = useState([]); 
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const {token} = useContext(authContext);
+    const { token } = useContext(authContext);
 
-    useEffect(() => {
-        const fetchData = async () => {
+    useEffect(() =>
+    {
+        const fetchData = async () =>
+        {
             setLoading(true);
 
-            try {
+            try
+            {
                 const res = await fetch(url, {
-                    headers: {Authorization: `Bearer ${token}`}
+                    headers: { Authorization: `Bearer ${token}` }
                 })
-                
+
                 const result = await res.json();
                 // console.log(result)
 
-                if (!res.ok){
+                if (!res.ok)
+                {
                     setError(result.message);
                     console.log(result)
                     // throw new Error(result.message)
@@ -29,7 +34,8 @@ const useFetchData = (url, key=null) => {
 
                 setData(result);
                 setLoading(false);
-            } catch (error) {
+            } catch (error)
+            {
                 setLoading(false);
                 setError(error.message);
             }
@@ -37,9 +43,9 @@ const useFetchData = (url, key=null) => {
         fetchData();
     }, [url, key])
 
-  return {
-    data, loading, error
-  }
+    return {
+        data, loading, error
+    }
 }
 
 export default useFetchData

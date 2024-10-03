@@ -1,4 +1,4 @@
-import {createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const initialState = {
   user: localStorage.getItem("user") !== null ? JSON.parse(localStorage.getItem("user")) : null,
@@ -9,22 +9,24 @@ const initialState = {
 
 export const authContext = createContext(initialState);
 
-const authReducer = (state, action) => {
-  switch (action.type) {
+const authReducer = (state, action) =>
+{
+  switch (action.type)
+  {
     case "ACTIVATE_USER":
-        return {
-            activationToken: action.payload.activationToken,
-            activationCode: action.payload.activationCode,
-            user: null,
-            token: null
-        }
+      return {
+        activationToken: action.payload.activationToken,
+        activationCode: action.payload.activationCode,
+        user: null,
+        token: null
+      }
 
     case "VERIFY_OTP":
-        return {
-            activationToken: null,
-            activationCode: null,
-        }
-        
+      return {
+        activationToken: null,
+        activationCode: null,
+      }
+
     case "LOGIN_START":
       return {
         user: null,
@@ -52,10 +54,12 @@ const authReducer = (state, action) => {
   }
 };
 
-export const AuthContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) =>
+{
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     localStorage.setItem("user", JSON.stringify(state.user))
     localStorage.setItem("token", state.token);
     localStorage.setItem("activationToken", state.activationToken);
